@@ -268,20 +268,60 @@
         /* ── CONTACT ── */
         #contact { background: var(--black); text-align: center; }
         #contact .section-body { margin: 0 auto 40px; }
+        .contact-form {
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            background: var(--coal);
+            border: 1px solid var(--iron);
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 14px;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--ember);
+        }
+        .contact-form textarea { height: 140px; resize: vertical; }
+        .contact-form button {
+            width: 100%;
+            padding: 14px;
+            background: var(--ember);
+            color: var(--white);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .contact-form button:hover { background: var(--gold); }
         .contact-email {
             display: inline-block;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--ember);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--ash);
             text-decoration: none;
-            text-transform: uppercase;
-            border-bottom: 2px solid rgba(232,93,4,0.3);
-            padding-bottom: 4px;
-            transition: color 0.2s, border-color 0.2s;
+            margin-top: 20px;
+            text-align: center;
+            display: block;
         }
-        .contact-email:hover { color: var(--gold); border-color: var(--gold); }
+        .contact-email:hover { color: var(--spark); }
 
         /* ── FOOTER ── */
         footer {
@@ -424,13 +464,20 @@
             <div class="section-label">Contact</div>
             <h2 class="section-title">Bring Us Your Idea</h2>
             <p class="section-body">Tell us what you're trying to build. We'll tell you how to forge it.</p>
-            <a href="mailto:tod@anvil-arts.com" class="contact-email">tod@anvil-arts.com</a>
+            <form class="contact-form" action="https://formspree.io/f/xgopbdyj" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="organization" placeholder="Organization (optional)">
+                <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+                <button type="submit">Send It →</button>
+            </form>
+            <a href="mailto:anvilmanager@gmail.com" class="contact-email">or email anvilmanager@gmail.com directly</a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Anvil Arts &mdash; <a href="mailto:tod@anvil-arts.com">tod@anvil-arts.com</a>
+        <p>&copy; 2026 Anvil Arts &mdash; <a href="mailto:anvilmanager@gmail.com">anvilmanager@gmail.com</a>
         <img src="PICS/anvil.png" height="24" title="Built by Anvil Arts"></p>
     </footer>
 
