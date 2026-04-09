@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anvil Arts — Where Ideas Get Hammered Into Reality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --black:   #0d0d0d;
+            --coal:    #1a1a1a;
+            --iron:    #2a2a2a;
+            --ember:   #e85d04;
+            --gold:    #f5a623;
+            --spark:   #ffd166;
+            --ash:     #aaaaaa;
+            --white:   #f0ede8;
+            --brand:   #d4845a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(13,13,13,0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(232,93,4,0.2);
+        }
+        .nav-logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brand);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--white); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            color: var(--ash);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--spark); }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('PICS/forge.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.7) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+            padding: 0 24px;
+        }
+        .hero-eyebrow {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1.0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--ember);
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: rgba(240,237,232,0.75);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--ember);
+            color: var(--white);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+
+        /* ── SECTION BASE ── */
+        section { padding: 100px 24px; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.05;
+        }
+        .section-body {
+            font-size: 1rem;
+            color: var(--ash);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ── WHAT WE BUILD ── */
+        #build { background: var(--coal); }
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 56px;
+        }
+        .build-card {
+            background: var(--iron);
+            border: 1px solid rgba(232,93,4,0.2);
+            border-top: 3px solid var(--ember);
+            border-radius: 6px;
+            padding: 32px 28px;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .build-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .build-card .icon { font-size: 2rem; margin-bottom: 16px; }
+        .build-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .build-card p { font-size: 0.9rem; color: var(--ash); line-height: 1.6; }
+
+        /* ── PORTFOLIO ── */
+        #portfolio { background: var(--black); }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 56px;
+        }
+        .portfolio-card {
+            background: var(--coal);
+            border: 1px solid var(--iron);
+            border-radius: 6px;
+            padding: 28px 24px;
+            transition: border-color 0.2s;
+        }
+        .portfolio-card:hover { border-color: var(--ember); }
+        .portfolio-card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ember);
+            background: rgba(232,93,4,0.1);
+            border: 1px solid rgba(232,93,4,0.3);
+            border-radius: 20px;
+            padding: 3px 10px;
+            margin-bottom: 14px;
+        }
+        .portfolio-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .portfolio-card p { font-size: 0.88rem; color: var(--ash); line-height: 1.6; }
+
+        /* ── ABOUT ── */
+        #about { background: var(--coal); }
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; gap: 40px; } }
+        .about-quote {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--white);
+        }
+        .about-quote em { font-style: normal; color: var(--ember); }
+        .about-text p {
+            font-size: 0.95rem;
+            color: var(--ash);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-text p:last-child { margin-bottom: 0; }
+
+        /* ── CONTACT ── */
+        #contact { background: var(--black); text-align: center; }
+        #contact .section-body { margin: 0 auto 40px; }
+        .contact-email {
+            display: inline-block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--ember);
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(232,93,4,0.3);
+            padding-bottom: 4px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .contact-email:hover { color: var(--gold); border-color: var(--gold); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--coal);
+            border-top: 1px solid var(--iron);
+            padding: 28px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        footer a { color: var(--brand); text-decoration: none; font-weight: 700; }
+        footer img { vertical-align: middle; margin-left: 8px; opacity: 0.6; }
+
+        /* ── DIVIDER ── */
+        .spark-divider {
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--ember), var(--gold), var(--ember), transparent);
+        }
+
+        @media (max-width: 640px) {
+            nav { padding: 14px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">Anvil <span>Arts</span></a>
+        <ul class="nav-links">
+            <li><a href="#build">What We Build</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Anvil Arts — Software &amp; Web</div>
+            <h1>Where Ideas Get<br><em>Hammered</em><br>Into Reality</h1>
+            <p class="hero-sub">We forge custom software, tools, and web experiences for sports organizations, churches, and nonprofits.</p>
+            <a href="#contact" class="btn-primary">Start a Project</a>
+        </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- WHAT WE BUILD -->
+    <section id="build">
+        <div class="section-inner">
+            <div class="section-label">What We Build</div>
+            <h2 class="section-title">Forged for the Work<br>You Actually Do</h2>
+            <p class="section-body">No off-the-shelf solutions. Every tool we build is hammered out specifically for how you operate.</p>
+            <div class="build-grid">
+                <div class="build-card">
+                    <div class="icon">⚽</div>
+                    <h3>Sports Management Tools</h3>
+                    <p>Referee scheduling, game assignment, club management, tournament coordination. Built for assignors who are done fighting spreadsheets.</p>
+                </div>
+                <div class="build-card">
+                    <div class="icon">⛪</div>
+                    <h3>Church &amp; Ministry Sites</h3>
+                    <p>Clean, fast websites for churches and ministries. Sermon archives, event pages, contact forms, and more — without the bloat.</p>
+                </div>
+                <div class="build-card">
+                    <div class="icon">🏛</div>
+                    <h3>Nonprofit &amp; Community</h3>
+                    <p>Custom tools and websites for nonprofits, veterans organizations, and community groups. Built to serve the mission, not the tech stack.</p>
+                </div>
+                <div class="build-card">
+                    <div class="icon">🔧</div>
+                    <h3>Custom Software</h3>
+                    <p>If you've got a workflow held together with duct tape and spreadsheets, we'll build something that actually works. Bring us your problem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+        <div class="section-inner">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">Work From the Forge</h2>
+            <p class="section-body">Every project is real. Built for real people doing real work.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <span class="tag">SaaS — Sports</span>
+                    <h3>Referee Tool</h3>
+                    <p>Full-stack referee scheduling platform for soccer assignors. Game management, ref availability, tournament support, club portals, and multi-tenant accounts.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="tag">Sports Org</span>
+                    <h3>NECONN Soccer</h3>
+                    <p>Club and league management website for the Northeast Connecticut soccer league. Game imports, club communication, and scheduling coordination.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="tag">Church</span>
+                    <h3>The Gathering Place</h3>
+                    <p>Church website with sermon archive, event listings, and congregation connection tools. Built for a growing community in Connecticut.</p>
+                </div>
+                <div class="portfolio-card">
+                    <span class="tag">Nonprofit — Veterans</span>
+                    <h3>The Wall That Heals</h3>
+                    <p>Event website for the Vietnam Veterans Memorial traveling wall. Built to serve veterans, families, and their communities with dignity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="about-inner">
+                <div class="about-quote">
+                    A Smith.<br>At an <em>Anvil.</em><br>That's not<br>an accident.
+                </div>
+                <div class="about-text">
+                    <p>Anvil Arts is Tod Smith — pastor, chaplain, and software developer based in New England. The name isn't a brand exercise. A smith works at an anvil. He takes raw material and shapes it into something useful, something lasting, something that does the job it was made to do.</p>
+                    <p>That's what we do with software. You bring the idea — the raw, unformed thing you've been carrying around. We put it on the anvil and hammer it into something real.</p>
+                    <p>We work with sports organizations, churches, and nonprofits because those are the people doing the most important work with the least resources. They deserve tools that actually work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spark-divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-inner">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">Bring Us Your Idea</h2>
+            <p class="section-body">Tell us what you're trying to build. We'll tell you how to forge it.</p>
+            <a href="mailto:tod@anvil-arts.com" class="contact-email">tod@anvil-arts.com</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Anvil Arts &mdash; <a href="mailto:tod@anvil-arts.com">tod@anvil-arts.com</a>
+        <img src="PICS/anvil.png" height="24" title="Built by Anvil Arts"></p>
+    </footer>
+
+</body>
+</html>
