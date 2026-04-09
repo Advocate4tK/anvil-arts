@@ -41,6 +41,16 @@
 - Website: not yet built — next session task
 - Referee Tool: live at referee-tool.com, in production use
 
+## Standard Footer — Base Sauce for Every Page
+```html
+<footer>
+    <p style="display:flex;align-items:center;justify-content:center;gap:10px;">&copy; 2026 [Site Name] by <a href="mailto:tod@anvil-arts.com" style="color:#d4845a;font-weight:700;text-decoration:none;">Anvil Arts</a> <img src="PICS/anvil.png" height="28" style="opacity:0.75;" title="Built by Anvil Arts"></p>
+</footer>
+```
+- Web projects with assets/ folder: use `assets/anvil.png`
+- Always tod@anvil-arts.com — never expose anvilmanager@gmail.com
+- This goes on EVERY page we build across ALL projects
+
 ## Relationship to Tod Innovations
 - Anvil Arts = the IT/software brand clients see
 - Tod Innovations = broader holding umbrella (non-IT ventures, wider ideas)
