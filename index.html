@@ -55,6 +55,12 @@
             text-transform: uppercase;
             color: var(--brand);
             text-decoration: none;
+            text-shadow: 0 0 12px rgba(212,132,90,0.7), 0 0 28px rgba(232,93,4,0.4);
+            animation: logoGlow 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes logoGlow {
+            0%   { text-shadow: 0 0 10px rgba(212,132,90,0.6), 0 0 24px rgba(232,93,4,0.3); }
+            100% { text-shadow: 0 0 18px rgba(212,132,90,0.9), 0 0 40px rgba(232,93,4,0.55); }
         }
         .nav-logo span { color: var(--white); }
         .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -85,12 +91,36 @@
             background-image: url('assets/forge.png');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.35);
+            animation: forgeFlicker 2.2s ease-in-out infinite alternate;
+        }
+        @keyframes forgeFlicker {
+            0%   { filter: brightness(0.18) saturate(2.2) hue-rotate(-15deg); }
+            40%  { filter: brightness(0.22) saturate(2.0) hue-rotate(-10deg); }
+            70%  { filter: brightness(0.16) saturate(2.5) hue-rotate(-18deg); }
+            100% { filter: brightness(0.20) saturate(2.1) hue-rotate(-12deg); }
         }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10,12,16,0.1) 0%, rgba(10,12,16,0.75) 100%);
+            background:
+                linear-gradient(to bottom, rgba(10,12,16,0.55) 0%, transparent 35%),
+                linear-gradient(to top,    rgba(10,12,16,0.4)  0%, transparent 40%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                radial-gradient(ellipse 90% 55% at 50% 115%, rgba(232,93,4,0.60) 0%, rgba(180,30,0,0.32) 35%, transparent 68%),
+                radial-gradient(ellipse 45% 30% at 50% 125%, rgba(255,170,0,0.45) 0%, transparent 60%);
+            animation: kilnBreath 2.8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        @keyframes kilnBreath {
+            0%   { opacity: 0.65; transform: scaleY(0.96); }
+            50%  { opacity: 1.00; transform: scaleY(1.02); }
+            100% { opacity: 0.80; transform: scaleY(1.05); }
         }
         .hero-content {
             position: relative;
@@ -116,6 +146,7 @@
             letter-spacing: 2px;
             color: var(--white);
             margin-bottom: 24px;
+            text-shadow: 0 0 30px rgba(232,93,4,0.5), 0 0 70px rgba(180,30,0,0.3);
         }
         .hero h1 em {
             font-style: normal;
