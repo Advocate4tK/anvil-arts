@@ -11,14 +11,16 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --black:   #0d0d0d;
-            --coal:    #1a1a1a;
-            --iron:    #2a2a2a;
+            --black:   #0a0c10;
+            --coal:    #111418;
+            --iron:    #1c2128;
+            --steel:   #30363d;
             --ember:   #e85d04;
-            --gold:    #f5a623;
-            --spark:   #ffd166;
-            --ash:     #aaaaaa;
-            --white:   #f0ede8;
+            --gold:    #f0883e;
+            --spark:   #ffa657;
+            --ash:     #8b949e;
+            --silver:  #c9d1d9;
+            --white:   #f0f6fc;
             --brand:   #d4845a;
         }
 
@@ -26,7 +28,7 @@
 
         body {
             background: var(--black);
-            color: var(--white);
+            color: var(--silver);
             font-family: 'DM Sans', sans-serif;
             font-size: 1rem;
             line-height: 1.6;
@@ -41,9 +43,9 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 40px;
-            background: rgba(13,13,13,0.85);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(232,93,4,0.2);
+            background: rgba(10,12,16,0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(48,54,61,0.8);
         }
         .nav-logo {
             font-family: 'Barlow Condensed', sans-serif;
@@ -88,7 +90,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.7) 100%);
+            background: linear-gradient(to bottom, rgba(10,12,16,0.1) 0%, rgba(10,12,16,0.75) 100%);
         }
         .hero-content {
             position: relative;
@@ -181,13 +183,13 @@
         }
         .build-card {
             background: var(--iron);
-            border: 1px solid rgba(232,93,4,0.2);
+            border: 1px solid var(--steel);
             border-top: 3px solid var(--ember);
             border-radius: 6px;
             padding: 32px 28px;
-            transition: border-color 0.2s, transform 0.15s;
+            transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
         }
-        .build-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .build-card:hover { border-color: var(--spark); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(232,93,4,0.15); }
         .build-card .icon { font-size: 2rem; margin-bottom: 16px; }
         .build-card h3 {
             font-family: 'Barlow Condensed', sans-serif;
@@ -210,21 +212,21 @@
         }
         .portfolio-card {
             background: var(--coal);
-            border: 1px solid var(--iron);
+            border: 1px solid var(--steel);
             border-radius: 6px;
             padding: 28px 24px;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .portfolio-card:hover { border-color: var(--ember); }
+        .portfolio-card:hover { border-color: var(--ember); box-shadow: 0 4px 16px rgba(232,93,4,0.12); }
         .portfolio-card .tag {
             display: inline-block;
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--ember);
-            background: rgba(232,93,4,0.1);
-            border: 1px solid rgba(232,93,4,0.3);
+            color: var(--spark);
+            background: rgba(232,93,4,0.08);
+            border: 1px solid rgba(232,93,4,0.25);
             border-radius: 20px;
             padding: 3px 10px;
             margin-bottom: 14px;
@@ -240,7 +242,7 @@
         .portfolio-card p { font-size: 0.88rem; color: var(--ash); line-height: 1.6; }
 
         /* ── ABOUT ── */
-        #about { background: var(--coal); }
+        #about { background: var(--iron); }
         .about-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -276,8 +278,8 @@
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            background: var(--coal);
-            border: 1px solid var(--iron);
+            background: var(--iron);
+            border: 1px solid var(--steel);
             border-radius: 4px;
             padding: 12px 16px;
             font-family: 'DM Sans', sans-serif;
@@ -326,7 +328,7 @@
         /* ── FOOTER ── */
         footer {
             background: var(--coal);
-            border-top: 1px solid var(--iron);
+            border-top: 1px solid var(--steel);
             padding: 28px 40px;
             text-align: center;
             font-size: 0.8rem;
