@@ -134,8 +134,16 @@
             font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--ember);
+            color: var(--ash);
             margin-bottom: 20px;
+        }
+        .eyebrow-brand {
+            color: #fff8e7;
+            animation: whiteHot 2s ease-in-out infinite alternate;
+        }
+        @keyframes whiteHot {
+            0%   { color: #ffd580; text-shadow: 0 0 8px rgba(255,180,0,0.8),  0 0 20px rgba(232,93,4,0.6),  0 0 40px rgba(180,30,0,0.4); }
+            100% { color: #fff8e7; text-shadow: 0 0 14px rgba(255,220,100,1), 0 0 30px rgba(255,140,0,0.8), 0 0 60px rgba(232,93,4,0.5); }
         }
         .hero h1 {
             font-family: 'Barlow Condensed', sans-serif;
@@ -398,7 +406,7 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-eyebrow">Anvil Arts — Software &amp; Web</div>
+            <div class="hero-eyebrow"><span class="eyebrow-brand">Anvil Arts</span> — Software &amp; Web</div>
             <h1>Where Ideas Get<br><em>Hammered</em><br>Into Reality</h1>
             <p class="hero-sub">We forge custom software, tools, and web experiences for teams doing important work with limited resources.</p>
             <a href="#contact" class="btn-primary">Start a Project</a>
